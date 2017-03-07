@@ -1,0 +1,80 @@
+Please create a single page app using MEAN Stack that adheres to the
+following Specs.
+> https://scotch.io/tutorials/setting-up-a-mean-stack-single-page-application
+> For angular part use the format we had in v2, instead of going into app it will go into public folder.
+
+1) Build a single page app for insertion,deletion and updation of the customer collection.
+> Change Members to Customers.
+
+2) There should be an option to filter customer data by name,mobile,phone,DOB and address.
+
+3) Edit functionality should be integrated with the same form meant for the insertion of customer data.
+
+4) There should be Pagination for showing the customer records.
+
+5) There should be validation of the require fields.
+
+Data Structure for the Customer Collection:
+
+_id:ObjectId
+
+Name :String
+
+Mobile:String
+
+Phone :String
+
+Addresses:[] (Flat,Street,State ,Pin Code)// provision for adding dynamically multi addresses
+
+DOB:Date
+
+Email:String
+
+>https://scotch.io/tutorials/building-dynamic-angular-forms-with-ngrepeat-and-ngform
+
+6) Write a script and insert thousands of the record for Bills.
+
+Data Structure for the Bill Collection:
+
+_id:ObjectId
+
+BillNumber: Number(auto incremental)
+
+BillDate:DateTime
+
+Items:[] (name:String,quantity:Number,Rate:Decimal) //Dynamic ally generate 1 to 10 items for
+
+each bill.)
+
+Discount:Number (in precent)
+
+Tax :Number (in Percent)
+
+CustomerId: _id of Customer Collection// Select _id randomly from existing Customer
+
+Collection.
+
+7) Create a customer report in the following format.
+
+Customer
+
+Name
+
+Mobile Phone Email NoOfBills Amount Avg
+
+Amount
+
+Abc -- -- -- -- -- --
+
+Amount : Consolidated amount of bills associated with the customer.
+
+Avg Amount: Amount/NoOfBills
+
+Calculation of Amount Of Each Bill: sum of Rate*Quantity of Each Bill –discount amount +Tax
+
+amount
+
+Discount Amount = sum of Rate*Quantity *Discount/100
+
+Tax Amount = DiscountAmount*Tax/100
+

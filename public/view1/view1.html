@@ -1,0 +1,62 @@
+<!-- <p>This is the partial for view 1.</p> -->
+<h2>Customers</h2>
+<div class="row addNewCustomer">
+<form name="customerForm">
+	<input class="col-6" type="text" placeholder="Name" name="customerName" ng-model="customer.Name">
+	<input class="col-6" type="text" placeholder="E-mail" ng-model="customer.Email">
+	<input class="col-6" type="text" placeholder="Phone" ng-model="customer.Phone">
+	<input class="col-6" type="text" placeholder="Mobile" ng-model="customer.Mobile">
+	<div class="col-6">
+		<!-- <div class="col-12 form-group" ng-repeat="address in customer.Addresses" ng-class="{ 'has-error' : userFieldForm.email.$invalid }"> -->
+		<div class="col-12 form-group" ng-repeat="address in customer.Addresses">
+			<ng-form name="customerAddressForm">
+			<input type="text" placeholder="Flat" class="form-control" ng-model="address.Flat" required>
+			<input type="text" placeholder="Street" class="form-control" ng-model="address.Street" required>
+			<input type="text" placeholder="State" class="form-control" ng-model="address.State" required>
+			<input type="text" placeholder="PinCode" class="form-control" name="customerAddress" ng-model="address.PinCode" required>
+			<p class="help-block" ng-show="customerAddressForm.customerAddress.$invalid">Valid Address Required</p>
+			</ng-form>
+			<button class="remove" ng-show="$last" ng-click="removeChoice()">-</button>
+		</div>
+		<button class="addfields" ng-click="addNewChoice()">Add another Address</button>
+	</div>
+	
+	<input class="col-6" type="date" ng-model="customer.DOB">
+	<span class="col-2">
+		<button class="col-12" ng-click="addNewCustomer()">Add/Update Customer</button>
+		<button class="col-12" ng-click="clearCustomer()">Cancel/Reset Form</button>
+	</span>
+</form>
+</div>
+
+<!-- <p>{{errortext}}</p> -->
+<!-- <div class="row filterCustomers">
+<span class="col-2"><b>Filter:</b></span>
+<select class="col-4" ng-model="filterState" ng-options="state for state in states"><option value="" selected="selected">Filter by State</option></select>
+<button class="col-2" ng-click="filtered()">Filter</button>
+<button class="col-2" ng-click="reset()">Reset</button>
+<span class="col-2"></span>
+</div> -->
+
+<div class="row withOverflow">
+	<table style="width:100%;">
+		<tr>
+			<th>Name</th>
+			<th>E-mail</th>
+			<th>Mobile</th>
+			<th>Phone</th>
+			<th>Addresses</th>
+			<th>DOB</th>
+			<th>Actions</th>
+		</tr>
+		<tr ng-repeat="customer in customers">
+			<td>{{ customer.Name }}</td>
+			<td>{{ customer.Email }}</td>
+			<td>{{ customer.Mobile }}</td>
+			<td>{{ customer.Phone }}</td>
+			<td><span ng-repeat="customeraddress in customer.Addresses">{{ customeraddress.Flat }},{{ customeraddress.Street }},{{ customeraddress.State }},{{ customeraddress.PinCode }}<br></span></td>
+			<td>{{ customer.DOB | date: 'mediumDate' }}</td>
+			<td><button ng-click="editCustomer(customer._id, customer)">Edit</button>&nbsp;<button ng-click="removeCustomer(customer._id)">&times;</button></td>
+		</tr>
+	</table>
+</div>
